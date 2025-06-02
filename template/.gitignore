@@ -1,0 +1,19 @@
+# Bytecode & caches
+__pycache__/
+*.py[cod]
+
+# Local virtual environment
+.venv/
+
+# Environment variable files
+.env
+.env.*
+
+# tooling
+.uv/
+ruff_cache/
+
+# testing
+.pytest_cache/
+.coverage
+htmlcov/

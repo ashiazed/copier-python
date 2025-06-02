@@ -1,0 +1,23 @@
+_message_after_copy: |
+  Created project '{{ project_name }}'. Create the Git repository:
+
+  cd {{ _copier_conf.dst_path }} && git init
+_subdirectory: template
+---
+project_name:
+  type: str
+  help: What is the name of your project?
+
+project_slug:
+  type: str
+  help: Project folder slug (e.g., my_project)
+  default: "{{ project_name | lower | replace(' ', '_') }}"
+
+author_name:
+  type: str
+  help: Author name
+
+python_version:
+  type: str
+  help: Which Python version to use in Docker?
+  default: "3.13"

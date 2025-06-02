@@ -1,0 +1,10 @@
+services:
+  app:
+    build:
+      args:
+        ENVIRONMENT: development
+    environment:
+      ENVIRONMENT: development
+    volumes:
+      - .:/app
+    command: bash

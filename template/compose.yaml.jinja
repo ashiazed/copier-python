@@ -1,0 +1,15 @@
+name: {{ project_slug }}
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/app.Dockerfile
+      args:
+        ENVIRONMENT: production
+    environment:
+      ENVIRONMENT: production
+    working_dir: /app
+    tty: true
+    stdin_open: true
+    command: bash

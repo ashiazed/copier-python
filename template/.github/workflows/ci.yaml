@@ -1,0 +1,36 @@
+name: CI for {{ project_slug }}
+
+jobs:
+  test:
+    name: Python
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version-file: "pyproject.toml"
+
+      - name: Install dependencies
+        run: uv sync --locked --all-extras --dev
+
+      - name: Lint
+        run: uv run ruff src tests
+
+      - name: Type check
+        run: uv run mypy src tests
+
+      - name: Run tests
+        run: uv run pytest tests
+
+      - name: Prune uv cache
+        run: uv cache prune --ci

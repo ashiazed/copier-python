@@ -1,0 +1,22 @@
+# Python bytecode and cache
+__pycache__/
+*.py[cod]
+
+# Local environments and tooling
+.venv/
+.uv/
+ruff_cache/
+
+# Testing
+tests/__pycache__/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Git & editor artifacts
+.git/
+*.log
+*.swp
+.DS_Store
+.idea/
+.vscode/

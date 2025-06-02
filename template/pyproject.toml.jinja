@@ -1,0 +1,41 @@
+[project]
+name = "{{ project_slug }}"
+authors = [{ name = "{{ author_name }}" }]
+description = "{{ project_description }}"
+dynamic = ["version"]
+requires-python = ">= {{ python_version }}"
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+  "pytest",
+  "pytest-cov",
+  "ruff",
+  "mypy",
+  "pre-commit"
+]
+
+[tool.pytest.ini_options]
+addopts = "-ra"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py{{ python_version | replace('.', '') }}"
+
+[tool.ruff.lint]
+select = ["B", "E", "F", "I", "SIM", "UP", "W"]
+exclude = ["build", "dist", ".venv", "__pypackages__"]
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
+known-first-party = ["{{ project_slug }}"]
+
+[tool.uv]
+package = false
+
+[tool.mypy]
+python_version = "{{ python_version }}"
+check_untyped_defs = true
+disallow_untyped_defs = false
+ignore_missing_imports = true

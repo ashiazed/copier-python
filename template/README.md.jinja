@@ -1,0 +1,50 @@
+# {{ project_name }}
+
+## Getting Started
+
+### Requirements
+
+- [Docker](https://www.docker.com/) + [Docker Compose](https://docs.docker.com/compose/)
+- [uv](https://github.com/astral-sh/uv)
+- [pre-commit](https://pre-commit.com/)
+
+### Bootstrap the environment
+
+```bash
+make bootstrap
+```
+
+This installs `pre-commit` hooks and locks dependencies using [uv](https://github.com/astral-sh/uv).
+
+## Usage
+
+Start the dev container:
+
+```bash
+docker compose up -d
+docker compose exec app bash
+```
+
+Inside the container:
+
+### Run tests
+
+```bash
+make test
+```
+
+## Lint and format manually
+
+```bash
+make format
+make lint
+make typecheck
+```
+
+## CI
+
+GitHub Actions will:
+
+- Install with `uv`
+- Run lint, type checks, and tests
+
