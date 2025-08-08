@@ -1,4 +1,8 @@
-name: CI for {{ project_slug }}
+name: CI
+
+on:
+  push:
+  pull_request:
 
 jobs:
   test:
@@ -24,7 +28,7 @@ jobs:
         run: uv sync --locked --all-extras --dev
 
       - name: Lint
-        run: uv run ruff src tests
+        run: uv run ruff check src tests
 
       - name: Type check
         run: uv run mypy src tests
